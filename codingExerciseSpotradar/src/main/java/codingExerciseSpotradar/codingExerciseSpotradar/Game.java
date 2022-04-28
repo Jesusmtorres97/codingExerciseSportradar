@@ -6,7 +6,7 @@ public class Game implements Comparable<Object>{
 	private int homeScore;
 	private int awayScore;
 	
-//	COnstructor without scores
+//	Constructor without scores
 	public Game(String home, String away) {
 		this.homeTeam = home;
 		this.awayTeam = away;
@@ -59,6 +59,17 @@ public class Game implements Comparable<Object>{
 	public int compareTo(Object o) {
 		Game other = (Game) o;
 		return other.getGoalsSum().compareTo(getGoalsSum());
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + awayScore;
+		result = prime * result + ((awayTeam == null) ? 0 : awayTeam.hashCode());
+		result = prime * result + homeScore;
+		result = prime * result + ((homeTeam == null) ? 0 : homeTeam.hashCode());
+		return result;
 	}
 
 	@Override
